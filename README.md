@@ -1,4 +1,4 @@
-# App_Laundry-Java
+# App_Laundry-Java V1.0
 
 Fiture:
 - Multi User
