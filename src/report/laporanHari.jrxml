@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3155adad-84c5-4fab-9592-00805d6c029d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="tanggal" class="java.lang.String"/>
+	<parameter name="total" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     transaksi.`tgl_masuk` AS transaksi_tgl_masuk,
+     transaksi.`berat` AS transaksi_berat,
+     transaksi.`kategori` AS transaksi_kategori,
+     transaksi.`total_bayar` AS transaksi_total_bayar
+FROM
+     `transaksi` transaksi
+WHERE
+tgl_masuk =$P{tanggal}]]>
+	</queryString>
+	<field name="transaksi_tgl_masuk" class="java.sql.Date"/>
+	<field name="transaksi_berat" class="java.lang.Integer"/>
+	<field name="transaksi_kategori" class="java.lang.String"/>
+	<field name="transaksi_total_bayar" class="java.lang.Integer"/>
+	<group name="transaksi_tgl_masuk">
+		<groupExpression><![CDATA[$F{transaksi_tgl_masuk}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="149" y="0" width="293" height="25" uuid="a4eb48aa-f43d-470f-b609-2aaee3f51611"/>
+				<textElement>
+					<font size="18" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[LAPORAN KEUANGAN HARIAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="175" y="24" width="224" height="23" uuid="b8c4daaa-19f4-4a9d-936e-19df074463ed"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ LAUNDRY EXTRA QILO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="48" splitType="Stretch">
+			<textField>
+				<reportElement x="49" y="0" width="100" height="20" uuid="dc270385-488b-4ae9-935a-5f7af4a86b00"/>
+				<textFieldExpression><![CDATA[$P{tanggal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="49" height="20" uuid="8ba415a4-d8af-49f8-ba39-7d7197510868"/>
+				<text><![CDATA[Tanggal : ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="0" width="80" height="20" uuid="cd46b026-2ffc-43d0-89b4-b782edfc8bf3"/>
+				<text><![CDATA[Tanggal Masuk]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="132" y="0" width="100" height="20" uuid="6af5d846-8f66-419a-a27a-e7c94da704a9"/>
+				<text><![CDATA[Berat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="269" y="0" width="100" height="20" uuid="d7b13760-f836-4bd4-a1cc-027de79841f5"/>
+				<text><![CDATA[Kategori]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="84" height="20" uuid="13befb22-82b2-4420-aa89-7ad74d2cc8bd"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="20" width="555" height="1" uuid="585d018c-2827-4ebe-bd80-6f2d05600f56"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="0" width="80" height="20" uuid="41f229eb-786e-4834-8f33-9027ff40c7af"/>
+				<textFieldExpression><![CDATA[$F{transaksi_tgl_masuk}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="132" y="0" width="100" height="20" uuid="617124dd-2093-4b0b-81d5-11ba7ded23b1"/>
+				<textFieldExpression><![CDATA[$F{transaksi_berat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="232" y="0" width="193" height="54" uuid="571f18fc-62d7-49c0-b4be-e83d8db94ded"/>
+				<textFieldExpression><![CDATA[$F{transaksi_kategori}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="84" height="20" uuid="a9bb6ebf-0937-4988-b6c8-515d3a0d71e8"/>
+				<textFieldExpression><![CDATA[$F{transaksi_total_bayar}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="298" y="13" width="157" height="20" uuid="2ad23d99-5576-472e-a8d9-e99480e960a0"/>
+				<text><![CDATA[Total Pendapatan Pada Hari ini : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="455" y="13" width="100" height="20" uuid="ef28f6da-8314-4134-b04c-85d2ab02a91b"/>
+				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
